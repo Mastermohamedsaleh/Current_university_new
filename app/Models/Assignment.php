@@ -10,6 +10,11 @@ class Assignment extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+    'name', 'course_id', 'college_id', 'classroom_id', 'section_id',
+    'start_time', 'end_time', 'file_name', 'degree', 'doctor_id'
+];
+
     public function doctor()
     {
         return $this->belongsTo('App\Models\Doctor', 'doctor_id');

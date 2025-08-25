@@ -10,6 +10,16 @@ class Lecture extends Model
     use HasFactory;
 
 
+        protected $fillable = [
+        'title',
+        'file_name',
+        'doctor_id',
+        'course_id',
+        'college_id',
+        'classroom_id',
+        'section_id',
+    ];
+
     public function course()
     {
         return $this->belongsTo('App\Models\Course', 'course_id');

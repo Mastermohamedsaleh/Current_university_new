@@ -13,11 +13,23 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\QuestionRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\Option;
+use App\Services\QuestionService;
 
 
 
 class QuestionController extends Controller
 {
+
+
+
+        protected $questionService;
+
+    public function __construct(QuestionService $questionService)
+    {
+        $this->questionService = $questionService;
+    }
+
+
     public function index()
     {
         //  
@@ -32,136 +44,140 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request)
     {
-        try {  
 
 
-            $quizz = Quizze::where('id', $request->quizz_id)->where('doctor_id',auth()->user()->id)->first(); 
+     try {
+            $this->questionService->create($request->all());
+            Session::flash('message', 'Add Success');
+            return back();
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+
+
+
+
+
+
+
+
+        // try {  
+
+
+        //     $quizz = Quizze::where('id', $request->quizz_id)->where('doctor_id',auth()->user()->id)->first(); 
           
 
-            if( $quizz->type_quiz  == 0 ){
-                $typequestion = $request->typequestion;
-                if($typequestion == 'trueorfale'){
-                  $trimmed = trim($request->answers);
+        //     if( $quizz->type_quiz  == 0 ){
+        //         $typequestion = $request->typequestion;
+        //         if($typequestion == 'trueorfale'){
+        //           $trimmed = trim($request->answers);
       
       
               
-                  $numWords = count(explode('-', $trimmed));
-                  if($numWords == 2){
-                      $question = new Question();
-                      $question->title = $request->title;
-                      $question->answers =   $trimmed;
-                      $question->right_answer = $request->right_answer;
-                      $question->score = $request->score;
-                      $question->quizze_id =  $request->quizz_id;
-                      $question->save();
+        //           $numWords = count(explode('-', $trimmed));
+        //           if($numWords == 2){
+        //               $question = new Question();
+        //               $question->title = $request->title;
+        //               $question->answers =   $trimmed;
+        //               $question->right_answer = $request->right_answer;
+        //               $question->score = $request->score;
+        //               $question->quizze_id =  $request->quizz_id;
+        //               $question->save();
       
-                      $answer = preg_split('/(-)/', $trimmed);
+        //               $answer = preg_split('/(-)/', $trimmed);
       
-                      for($i = 0 ; $i < count($answer) ; $i++){
-                       $insert = [
-                           'question_id' => $question->id,
-                           'option_text'=>$answer[$i],
-                           'points'=>$request->score,
-                         ];
-                   DB::table('options')->insert($insert);
-                   } 
+        //               for($i = 0 ; $i < count($answer) ; $i++){
+        //                $insert = [
+        //                    'question_id' => $question->id,
+        //                    'option_text'=>$answer[$i],
+        //                    'points'=>$request->score,
+        //                  ];
+        //            DB::table('options')->insert($insert);
+        //            } 
                      
       
       
-                      Session::flash('message', 'Add Success');
-                      return redirect()->back();
+        //               Session::flash('message', 'Add Success');
+        //               return redirect()->back();
       
-                  }else{
-                      Session::flash('error', 'Only 1 Sparate between String Please Use -');
-                      return redirect()->back();
-                  }
-                }else{
-                  $trimmed = trim($request->answers);
-                  $numWords = count(explode('-', $trimmed));
-                  if($numWords == 3){
-                      $question = new Question();
-                      $question->title = $request->title;
-                      $question->answers =   $trimmed;
-                      $question->right_answer = $request->right_answer;
-                      $question->score = $request->score;
-                      $question->quizze_id =  $request->quizz_id;
-                      $question->save();
+        //           }else{
+        //               Session::flash('error', 'Only 1 Sparate between String Please Use -');
+        //               return redirect()->back();
+        //           }
+        //         }else{
+        //           $trimmed = trim($request->answers);
+        //           $numWords = count(explode('-', $trimmed));
+        //           if($numWords == 3){
+        //               $question = new Question();
+        //               $question->title = $request->title;
+        //               $question->answers =   $trimmed;
+        //               $question->right_answer = $request->right_answer;
+        //               $question->score = $request->score;
+        //               $question->quizze_id =  $request->quizz_id;
+        //               $question->save();
+    
+        //               $answer = preg_split('/(-)/', $trimmed);
       
+        //               for($i = 0 ; $i < count($answer) ; $i++){
+        //                $insert = [
+        //                    'question_id' => $question->id,
+        //                    'option_text'=>$answer[$i],
+        //                    'points'=>$request->score,
+        //                  ];
+        //            DB::table('options')->insert($insert);
+        //            } 
+        //               Session::flash('message', 'Add Success');
+        //               return redirect()->back();
+        //           }else{
+        //               Session::flash('error', 'Only 2 Sparate between String Please Use -');
+        //               return redirect()->back();
+        //           }
+        //         }  
       
-                      $answer = preg_split('/(-)/', $trimmed);
-      
-                      for($i = 0 ; $i < count($answer) ; $i++){
-                       $insert = [
-                           'question_id' => $question->id,
-                           'option_text'=>$answer[$i],
-                           'points'=>$request->score,
-                         ];
-                   DB::table('options')->insert($insert);
-                   } 
-                     
-      
-      
-                      Session::flash('message', 'Add Success');
-                      return redirect()->back();
-                  }else{
-                      Session::flash('error', 'Only 2 Sparate between String Please Use -');
-                      return redirect()->back();
-                  }
-                }  
-      
-           }else{
+        //    }else{
+        //   $typequestion = $request->typequestion;
+        //   if($typequestion == 'trueorfale'){
+        //     $trimmed = trim($request->answers);
+        //     $numWords = count(explode('-', $trimmed));
+        //     if($numWords == 2){
+        //         $question = new Question();
+        //         $question->title = $request->title;
+        //         $question->answers =   $trimmed;
+        //         $question->right_answer = $request->right_answer;
+        //         $question->score = $request->score;
+        //         $question->quizze_id =  $request->quizz_id;
+        //         $question->save();
+        //         Session::flash('message', 'Add Success');
+        //         return redirect()->back();
 
-         
-
-
-
-        
-
-
-
-
-          $typequestion = $request->typequestion;
-          if($typequestion == 'trueorfale'){
-            $trimmed = trim($request->answers);
-            $numWords = count(explode('-', $trimmed));
-            if($numWords == 2){
-                $question = new Question();
-                $question->title = $request->title;
-                $question->answers =   $trimmed;
-                $question->right_answer = $request->right_answer;
-                $question->score = $request->score;
-                $question->quizze_id =  $request->quizz_id;
-                $question->save();
-                Session::flash('message', 'Add Success');
-                return redirect()->back();
-
-            }else{
-                Session::flash('error', 'Only 1 Sparate between String Please Use -');
-                return redirect()->back();
-            }
-          }else{
-            $trimmed = trim($request->answers);
-            $numWords = count(explode('-', $trimmed));
-            if($numWords == 3){
-                $question = new Question();
-                $question->title = $request->title;
-                $question->answers =   $trimmed;
-                $question->right_answer = $request->right_answer;
-                $question->score = $request->score;
-                $question->quizze_id =  $request->quizz_id;
-                $question->save();
-                Session::flash('message', 'Add Success');
-                return redirect()->back();
+        //     }else{
+        //         Session::flash('error', 'Only 1 Sparate between String Please Use -');
+        //         return redirect()->back();
+        //     }
+        //   }else{
+        //     $trimmed = trim($request->answers);
+        //     $numWords = count(explode('-', $trimmed));
+        //     if($numWords == 3){
+        //         $question = new Question();
+        //         $question->title = $request->title;
+        //         $question->answers =   $trimmed;
+        //         $question->right_answer = $request->right_answer;
+        //         $question->score = $request->score;
+        //         $question->quizze_id =  $request->quizz_id;
+        //         $question->save();
+        //         Session::flash('message', 'Add Success');
+        //         return redirect()->back();
           
-            }else{
-                Session::flash('error', 'Only 2 Sparate between String Please Use -');
-                return redirect()->back();
-            }
-          }  
-        }  //end type Quiz
-        } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
-        }
+        //     }else{
+        //         Session::flash('error', 'Only 2 Sparate between String Please Use -');
+        //         return redirect()->back();
+        //     }
+        //   }  
+        // }  //end type Quiz
+        // } catch (\Exception $e) {
+        //     return redirect()->back()->with(['error' => $e->getMessage()]);
+        // }
 
     }
 

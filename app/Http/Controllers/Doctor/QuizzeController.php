@@ -14,11 +14,20 @@ use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\QuizRequest;
 use Illuminate\Support\Facades\DB;
+use App\Services\QuizzeService;
 
 
 
 class QuizzeController extends Controller
 {
+
+
+        public function __construct(
+        protected QuizzeService $quizzeService
+    ) {}
+
+
+
     public function index()
     {
         $quizzes = Quizze::where('doctor_id',auth()->user()->id)->get();
@@ -34,26 +43,12 @@ class QuizzeController extends Controller
     public function store(QuizRequest $request)
     {
         
-       $course = Course::where('id' , $request->course_id)->first();
-        try {
-
-
-            $quizzes = new Quizze();
-            $quizzes->name = $request->name;
-            $quizzes->course_id =  $request->course_id;
-            $quizzes->college_id =  $course->college_id;
-            $quizzes->classroom_id =  $course->classroom_id;
-            $quizzes->section_id =  $course->section_id;
-            $quizzes->start_time =  $request->start_time;
-            $quizzes->end_time =  $request->end_time;
-            $quizzes->type_quiz =  $request->type_quiz;
-            $quizzes->doctor_id = auth()->user()->id;
-            $quizzes->save();
+              try {
+            $this->quizzeService->createQuiz($request->all());
             Session::flash('message', 'Add Success');
             return redirect()->route('quizzes.index');
-        }
-        catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
 
     
@@ -83,67 +78,50 @@ class QuizzeController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $quizz = Quizze::findorFail($request->id);
-            $quizzes->name = $request->name;
-            $quizzes->course_id = $request->course_id;
-            $quizzes->college_id = $request->college_id;
-            $quizzes->classroom_id = $request->classroom_id;
-            $quizzes->section_id = $request->section_id;
-            $quizzes->doctor_id = auth()->user()->id;
-            $quizz->save();
+            $this->quizzeService->updateQuiz($id, $request->all());
             Session::flash('message', 'Update Success');
-            return redirect()->back();
+            return back();
         } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
     public function destroy(Request $request ,$id)
     {
-        try {
-            Quizze::destroy($request->id);
+       try {
+            $this->quizzeService->deleteQuiz($id);
             Session::flash('message', 'Delete Success');
-            return redirect()->back();
+            return back();
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
-
+    // Degree of quizze
     public function student_quizze($quizze_id)
     {
-        $quizz = Quizze::where('id',$quizze_id)->where('doctor_id',auth()->user()->id)->first();
-        if( $quizz ){
-            if($quizz->id == $quizze_id){
-                $degrees = Degree::where('quizze_id', $quizze_id)->get();
-                return view('Doctor.Quizzes.student_quizze', compact('degrees'));
-            }else{
-                return redirect()->back();
-            }
-        }else{
-            return redirect()->back();
-        }
+         $degrees = $this->quizzeService->getQuizDegrees($quizze_id);
+
+        if (!$degrees) return back();
+
+        return view('Doctor.Quizzes.student_quizze', compact('degrees'));
     }
 
+
+
+    // return quizze to one student
      public function  repeatquiz(Request $request ,$id){
-        $validated = $request->validate([
+        $request->validate([
             'start_time' => 'required',
-            'end_time' => 'required',
-        ]);
-        $student  = Student::where('id',$request->student_id)->first();
-        DB::table('special_quizzes')->insert([
-          'quizze_id'=>$request->quizze_id,
-          'student_id'=>$request->student_id,
-          'college_id'=>$student->college_id,
-          'classroom_id'=>$student->classroom_id,
-          'section_id'=>$student->section_id,
-          'course_id'=>$request->course_id,
-          'start_time'=>$request->start_time,
-          'end_time'=>$request->end_time,
+            'end_time'   => 'required',
         ]);
 
-        Degree::where('student_id',$request->student_id)->where('quizze_id',$request->quizze_id)->delete();
-        Session::flash('message', 'Repeat Success');
-        return redirect()->back();       
-    } 
+        try {
+            $this->quizzeService->repeatQuiz($request->all());
+            Session::flash('message', 'Repeat Success');
+            return back();
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 
 }

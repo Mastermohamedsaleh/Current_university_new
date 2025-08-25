@@ -4,52 +4,46 @@ namespace App\Http\Controllers\Doctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Course;
 use App\Models\Lecture;
 
 class CourseController extends Controller
 {
-
-
-    public function courses(){
-        $courses = Course::where('doctor_id',auth()->user()->id)->get();
-        return view('Doctor.My_Lecture.course',compact('courses'));
+    // دكتور يشوف كورساتو
+    public function courses()
+    {
+        $courses = Course::where('doctor_id', auth()->id())->get();
+        return view('Doctor.My_Lecture.course', compact('courses'));
     }
 
+    // دكتور يشوف محاضرات كورس معيّن
+    public function lecturedoctor(Request $request, $course_id)
+    {
+        // نجيب الكورس ونتأكد إنه يخص الدكتور الحالي
+        $course = Course::where('id', $course_id)
+            ->where('doctor_id', auth()->id())
+            ->first();
 
+        if (! $course) {
+            return redirect()->back()->withErrors(['error' => 'Course not found or not authorized']);
+        }
 
+        // البحث (لو فيه كلمة مفتاحية)
+        $search = $request->input('search');
+        $lecturesQuery = Lecture::where('course_id', $course_id)
+            ->where('doctor_id', auth()->id());
 
+        if ($search) {
+            $lecturesQuery->where('title', 'like', "%{$search}%");
+        }
 
-    
-    public function lecturedoctor(Request $request, $course_id){
+        $lectures = $lecturesQuery->orderBy('id', 'DESC')->get();
 
-        $courses = Course::where('id',$course_id)->where('doctor_id',auth()->user()->id)->first();
+        // لو فيه محاضرات أو لا
+        if ($lectures->isEmpty()) {
+            return redirect()->back()->withErrors(['error' => 'No lectures found']);
+        }
 
-if($courses){
-    $search = $request->input('search');          
-    if ($search) {  
-        $lectures = Lecture::where('course_id',$course_id)->where('title', 'like', "%$search%")->where('doctor_id',auth()->user()->id)
-        ->orderBy('id', 'DESC')->get();
-    }else{
-        $lectures = Lecture::where('course_id',$course_id)->where('doctor_id',auth()->user()->id)->get(); 
-    }  
-    if( $lectures){
-    return view('Doctor.My_Lecture.index',compact('lectures','course_id'));
-    }else{
-        return redirect()->back();
+        return view('Doctor.My_Lecture.index', compact('lectures', 'course_id'));
     }
-
-}else{
-    return redirect()->back();
-
-}
-
-
-
-}
-
-
-
-
 }

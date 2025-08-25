@@ -9,7 +9,17 @@ class Quizze extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','subject_id','college_id','classroom_id','section_id','doctor_id'];
+     protected $fillable = [
+        'name',
+        'course_id',
+        'college_id',
+        'classroom_id',
+        'section_id',
+        'start_time',
+        'end_time',
+        'type_quiz',
+        'doctor_id',
+    ];
 
 
     public function doctor()
