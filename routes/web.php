@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
 
+
+use App\Events\AssignmentCreated;
+use App\Models\Assignment;
+
+
+use App\Http\Controllers\SocialController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +36,27 @@ Route::get('about', function () {
     return view('about');
 });
 
+Route::get('test', function () {
+
+
+
+$assignment =   Assignment::create([
+    'name'=>'m',
+    'course_id'=>1,
+    'college_id'=>1,
+    'classroom_id'=>1,
+    'start_time'=> '2025-10-08 17:04:00',
+    'end_time'=>'2025-10-08 18:04:00',
+    'file_name'=>'1759932270.pdf',
+    'degree'=>5,
+    'doctor_id'=>1,
+]);
+
+
+
+      return event(new AssignmentCreated($assignment));
+       
+});
 
 Route::get('fields', function () {
     return view('fields');
@@ -48,9 +77,6 @@ Route::get('event', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-
-
 
 
 

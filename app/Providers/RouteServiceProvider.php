@@ -84,5 +84,41 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+    RateLimiter::for('admin_login', function ($request) {
+       return Limit::perMinute(5)->by($request->email.$request->ip())->response(function() {
+            return response()->json([
+                'message' => 'لقد تجاوزت الحد المسموح به لتسجيل , حاول مرة أخرى بعد دقيقة.'
+            ], 429);
+        });
+    
+    });
+    RateLimiter::for('student_login', function ($request) {
+        return Limit::perMinute(5)->by($request->email.$request->ip())->response(function() {
+            return response()->json([
+                'message' => 'لقد تجاوزت الحد المسموح به لتسجيل , حاول مرة أخرى بعد دقيقة.'
+            ], 429);
+        });
+    });
+
+    RateLimiter::for('doctor_login', function ($request) {
+        return Limit::perMinute(3)->by($request->email.$request->ip())->response(function() {
+            return response()->json([
+                'message' => 'لقد تجاوزت الحد المسموح به لتسجيل , حاول مرة أخرى بعد دقيقة.'
+            ], 429);
+        });
+   
+    });
+
+        RateLimiter::for('accountant_login', function ($request) {
+        return Limit::perMinute(3)->by($request->email.$request->ip())->response(function() {
+            return response()->json([
+                'message' => 'لقد تجاوزت الحد المسموح به لتسجيل , حاول مرة أخرى بعد دقيقة.'
+            ], 429);
+        });
+    });
+
+
+
     }
 }

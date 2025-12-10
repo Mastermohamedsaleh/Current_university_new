@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Repositories\AssignmentRepository;
 use Illuminate\Support\Facades\File;
 
+use App\Events\AssignmentCreated;
+
 class AssignmentService
 {
     protected $assignmentRepo;
@@ -39,7 +41,9 @@ class AssignmentService
             'doctor_id'    => auth()->id(),
         ];
 
-        return $this->assignmentRepo->create($data);
+$assignment =$this->assignmentRepo->create($data);
+        event(new AssignmentCreated($assignment));
+        return $assignment;
         
     }
 

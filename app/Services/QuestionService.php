@@ -37,9 +37,10 @@ class QuestionService
         ];
 
         // نمررها للريبوزتري
-        return $this->questionRepository->create($questionData);
+         $question = $this->questionRepository->create($questionData);
       
-                      $answer = preg_split('/(-)/', $answers);
+                      // $answer = preg_split('/(-)/', $answers);
+                           $answer   = explode('-', $answers);
       
                       for($i = 0 ; $i < count($answer) ; $i++){
                        $insert = [
@@ -49,8 +50,8 @@ class QuestionService
                          ];
                    DB::table('options')->insert($insert);
                    } 
-                      Session::flash('message', 'Add Success');
-                      return redirect()->back();
+                     
+                      return $question;
                   }else{
                       Session::flash('error', 'Only 1 Sparate between String Please Use -');
                       return redirect()->back();
@@ -69,9 +70,10 @@ class QuestionService
         ];
 
         // نمررها للريبوزتري
-        return $this->questionRepository->create($questionData);
+   $question = $this->questionRepository->create($questionData);
     
-                      $answer = preg_split('/(-)/', $answers);
+                      // $answer = preg_split('/(-)/', $answers);
+                      $answer   = explode('-', $answers);
       
                       for($i = 0 ; $i < count($answer) ; $i++){
                        $insert = [
@@ -81,8 +83,8 @@ class QuestionService
                          ];
                    DB::table('options')->insert($insert);
                    } 
-                      Session::flash('message', 'Add Success');
-                      return redirect()->back();
+                     
+                      return $question;
                   }else{
                       Session::flash('error', 'Only 2 Sparate between String Please Use -');
                       return redirect()->back();
@@ -147,20 +149,22 @@ class QuestionService
     }
 
 
-  public function create(array $data): Question 
-  {
+public function create(array $data): Question 
+{
     $quizz = Quizze::where('id', $data['quizz_id'])
-    ->where('doctor_id',auth()->user()->id)
-    ->first(); 
+        ->where('doctor_id', auth()->user()->id)
+        ->first();
 
-
-    if( $quizz->type_quiz  == 0 )
-    {
-        return $this->EasyQuizze($data, $quizz); 
+    if (!$quizz) {
+        throw new \Exception("Quiz not found or not authorized");
     }
 
-      return $this->HardQuizze($data, $quizz); 
+    if ($quizz->type_quiz == 0) {
+        return $this->EasyQuizze($data, $quizz);
+    }
 
- }
+    return $this->HardQuizze($data, $quizz);
+}
+
 
 }

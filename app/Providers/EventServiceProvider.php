@@ -18,8 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \App\Events\AssignmentCreated::class => [
+        \App\Listeners\SendAssignmentNotification::class,
+    ],
     ];
 
+    
     /**
      * Register any events for your application.
      *

@@ -30,22 +30,22 @@ Route::middleware('guest')->group(function () {
 
 
     // /////////////////////////////// login admin ///////////////////////////////////////////////
-    Route::post('login/admin', [AdminAuthController::class, 'store'])->middleware('guest')->name('admin.login');
+    Route::post('login/admin', [AdminAuthController::class, 'store'])->middleware(['guest','throttle:admin_login'])->name('admin.login');
     // /////////////////////////////// login admin ///////////////////////////////////////////////
 
 
     // /////////////////////////////// login student ///////////////////////////////////////////////
-    Route::post('login/student', [StudentController::class, 'store'])->name('student.login');
+    Route::post('login/student', [StudentController::class, 'store'])->name('student.login')->middleware('throttle:student_login');
     // /////////////////////////////// login student ///////////////////////////////////////////////
 
 
     // /////////////////////////////// login student ///////////////////////////////////////////////
-    Route::post('login/doctor', [DoctorController::class, 'store'])->name('doctor.login');
+    Route::post('login/doctor', [DoctorController::class, 'store'])->name('doctor.login')->middleware('throttle:doctor_login');
     // /////////////////////////////// login student ///////////////////////////////////////////////
 
 
     // /////////////////////////////// login student ///////////////////////////////////////////////
-    Route::post('login/accountant', [AccountantController::class, 'store'])->name('accountant.login');
+    Route::post('login/accountant', [AccountantController::class, 'store'])->name('accountant.login')->middleware('throttle:accountant_login');;
     // /////////////////////////////// login student ///////////////////////////////////////////////
 
 

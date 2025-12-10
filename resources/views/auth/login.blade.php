@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="{{ URL::asset('Styles/home.css') }} " />
 <script defer src="{{ URL::asset('Script/bootstrap.bundle.min.js') }}  "></script>
 <script defer src="{{ URL::asset('Script/signin.js') }}"></script>
+
+
   </head>
   <body>
     <!-- navbar -->
@@ -228,6 +230,7 @@
               >
                 Sign in
               </button>
+
             </form>
             <!-- Doctor form -->
             <form
@@ -277,6 +280,10 @@
               >
                 Sign in
               </button>
+
+
+
+
             </form>
             <!-- Admin form -->
             <form
@@ -326,7 +333,16 @@
               >
                 Sign in
               </button>
+
+
+
+
             </form>
+
+
+
+
+
             <!-- Accountant form -->
             <form
             action="{{route('accountant.login')}}"  method="post"

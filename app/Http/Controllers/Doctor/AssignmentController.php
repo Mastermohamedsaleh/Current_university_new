@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AssignmentRequest;
 use App\Models\Course;
+use App\Models\Assignment;
 use App\Services\AssignmentService;
 
 use Illuminate\Support\Facades\Session;
