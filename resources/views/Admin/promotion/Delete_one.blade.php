@@ -13,7 +13,7 @@
        @method('DELETE')
       @csrf
 
-
+ <input type="hidden" name="page_id" value="2">
 
       <h5 style="font-family: 'Cairo', sans-serif;">  Do You Want Return Student {{$promotion->student->name}} ?</h5>
             

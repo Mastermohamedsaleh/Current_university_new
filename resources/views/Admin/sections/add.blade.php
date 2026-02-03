@@ -61,6 +61,9 @@
 
 <script>
 
+
+
+
 $(document).ready(function () {
 
     $('select[name="college_id"]').on('change', function () {

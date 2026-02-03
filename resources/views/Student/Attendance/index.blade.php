@@ -98,11 +98,13 @@
 
 
     <!-- <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4"> -->
-        <input name="attendences[{{ $student->id }}]" 
+      
+    <input name="attendences[{{ $student->id }}]" 
          @foreach($student->attendance()->where('attendence_date',date('Y-m-d'))->get() as $attentance)
              {{ $attentance->attendence_status == 1 ? 'checked' : '' }}
          @endforeach
          value="presence"   class="leading-tight" type="radio" >
+
         <span class="text-success">Present</span>
     <!-- </label> -->
 

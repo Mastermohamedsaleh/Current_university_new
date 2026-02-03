@@ -14,6 +14,10 @@ use App\Repositories\QuizzeRepository;
 
 use App\Interfaces\QuestionRepositoryInterface;
 use App\Repositories\QuestionRepository;
+use App\Interfaces\PromotionRepositoryInterface;
+use App\Repositories\PromotionRepository;
+use App\Interfaces\studentRepositoryInterface;
+use App\Repositories\studentRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         QuizzeRepository::class
     );
 
+     $this->app->bind(PromotionRepositoryInterface::class, PromotionRepository::class);
+     $this->app->bind(studentRepositoryInterface::class, studentRepository::class);
      $this->app->bind(QuestionRepositoryInterface::class, QuestionRepository::class);
     }
 
