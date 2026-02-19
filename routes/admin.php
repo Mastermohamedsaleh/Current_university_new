@@ -43,8 +43,6 @@ use App\Http\Controllers\Auth\AdminAuthController;
 */
 
 
-define('PAGENATOR_COUNT', 1);
-
 
 Route::get('dashboard/admin', function () {
     return view('index');

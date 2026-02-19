@@ -5,7 +5,7 @@
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.js"></script>
 <!-- DAtatable -->
 
-
+ <script src="{{ mix('/js/app.js') }}"></script>
 
 <script>
     $(document).ready(function() {

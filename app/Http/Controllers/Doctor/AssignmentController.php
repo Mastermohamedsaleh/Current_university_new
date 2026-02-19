@@ -6,7 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AssignmentRequest;
 use App\Models\Course;
 use App\Models\Assignment;
+use App\Models\Student;
+use App\Notifications\NewAssignmentAdded;
+
 use App\Services\AssignmentService;
+use App\Repositories\AssignmentRepository;
+
 
 use Illuminate\Support\Facades\Session;
 
@@ -33,8 +38,9 @@ class AssignmentController extends Controller
 
     public function store(AssignmentRequest $request)
     {
+
         try {
-            $this->assignmentService->createAssignment($request);
+            $this->assignmentService->createAssignment($request->all());
             Session::flash('message', 'Add Success');
             return redirect()->route('assignments.index');
         } catch (\Exception $e) {
@@ -66,7 +72,7 @@ class AssignmentController extends Controller
     public function update(AssignmentRequest $request, $id)
     {
         try {
-            $this->assignmentService->updateAssignment($request, $id);
+            $this->assignmentService->updateAssignment($request->all(), $id);
             Session::flash('message', 'Update Success');
             return redirect()->route('assignments.index');
         } catch (\Exception $e) {

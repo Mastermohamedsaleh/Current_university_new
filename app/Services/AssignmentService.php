@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Models\Course;
+use App\Models\Student;
 use App\Repositories\AssignmentRepository;
 use Illuminate\Support\Facades\File;
+use App\Notifications\NewAssignmentAdded;
 
 use App\Events\AssignmentCreated;
 
@@ -22,26 +24,36 @@ class AssignmentService
         return $this->assignmentRepo->getAllByDoctor($doctorId);
     }
 
-    public function createAssignment($request)
+    public function createAssignment(array $data)
     {
-        $course = Course::findOrFail($request->course_id);
-        $fileName = time() . '.' . $request->file('file_name')->extension();
-        $request->file('file_name')->move(public_path('Assignment_Doctor'), $fileName);
+        $course = Course::findOrFail($data['course_id']);
+        // $fileName = time() . '.' . $data['file_name']->extension();
+        // $data['file_name']->move(public_path('Assignment_Doctor'), $fileName);
 
-        $data = [
-            'name'         => $request->name,
+
+
+   if (isset($data['file_name'])) {
+        $file = $data['file_name']; // ده object UploadedFile من Controller
+        $fileName = time() . '.' . $file->extension();
+        $file->move(public_path('Assignment_Doctor'), $fileName);
+        $data['file_name'] = $fileName;
+    }
+
+        $assignment =$this->assignmentRepo->create(
+                [
+            'name'=> $data['name'],
             'course_id'    => $course->id,
             'college_id'   => $course->college_id,
             'classroom_id' => $course->classroom_id,
             'section_id'   => $course->section_id,
-            'start_time'   => $request->start_time,
-            'end_time'     => $request->end_time,
+            'start_time'   => $data['start_time'],
+            'end_time'     => $data['end_time'],
             'file_name'    => $fileName,
-            'degree'       => $request->degree,
+            'degree'       => $data['degree'],
             'doctor_id'    => auth()->id(),
-        ];
+                ]
+             );    
 
-$assignment =$this->assignmentRepo->create($data);
         event(new AssignmentCreated($assignment));
         return $assignment;
         

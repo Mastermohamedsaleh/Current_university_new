@@ -6,7 +6,6 @@ use App\Events\AssignmentCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Notifications\NewAssignmentAdded;
-
 use App\Models\Student;
 
 
@@ -24,8 +23,6 @@ class SendAssignmentNotification
 
     public function handle(AssignmentCreated $event)
     {
-
-
         $assignment = $event->assignment;
         $classroom = $assignment->classroom_id;
         $college   = $assignment->college_id;
@@ -35,6 +32,7 @@ class SendAssignmentNotification
         foreach ($students as $student) {
             $student->notify(new NewAssignmentAdded($assignment));
         }
-
     }
 }
+
+
