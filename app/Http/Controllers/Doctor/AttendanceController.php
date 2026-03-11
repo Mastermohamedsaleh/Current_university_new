@@ -17,7 +17,6 @@ class AttendanceController extends Controller
     public function index()
     {
         $courses_doctors = Course::where('doctor_id',auth()->user()->id)->get();
-    //    $students = Student::where('college_id',$courses_doctors->college_id)->where('classroom_id',$courses_doctors->classroom_id)->where('section_id',$courses_doctors->section_id)->get();
         return view('Student.Attendance.index',compact('courses_doctors'));
     }
 

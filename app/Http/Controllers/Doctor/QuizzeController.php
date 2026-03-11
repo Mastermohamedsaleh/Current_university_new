@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\QuizRequest;
 use Illuminate\Support\Facades\DB;
 use App\Services\QuizzeService;
+use App\Events\QuizCreated;
+
+
 
 
 
@@ -30,7 +33,7 @@ class QuizzeController extends Controller
 
     public function index()
     {
-        $quizzes = Quizze::where('doctor_id',auth()->user()->id)->get();
+       $quizzes =  $this->quizzeService->getDoctorQuizzes();
         return view('Doctor.Quizzes.index', compact('quizzes'));
     }
 
@@ -41,10 +44,10 @@ class QuizzeController extends Controller
     }
 
     public function store(QuizRequest $request)
-    {
-        
-              try {
-            $this->quizzeService->createQuiz($request->all());
+    {   
+        try {
+      $quiz = $this->quizzeService->createQuiz($request->all());
+
             Session::flash('message', 'Add Success');
             return redirect()->route('quizzes.index');
         } catch (\Exception $e) {

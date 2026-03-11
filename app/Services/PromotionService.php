@@ -35,12 +35,12 @@ class PromotionService
     {
         DB::transaction(function() use ($data) {
 
-            // $students = $this->studentRepo->getStudents($data);
+           
             $students = $this->getPromotionsByUser($data);
      
 
             foreach($students as $student){
-                // تحديث الطلاب
+                // update students
                 $this->studentRepo->update([$student->id], [
                     'college_id'   => $data['college_id_new'],
                     'classroom_id' => $data['classroom_id_new'],
@@ -48,7 +48,7 @@ class PromotionService
                     'academic_year'=> $data['academic_year_new'],
                 ]);
 
-                // تسجيل الترقية
+                // store promotion  
                 $this->promotionRepo->createOrUpdate([
                     'student_id'        => $student->id,
                     'from_college'      => $data['college_id'],

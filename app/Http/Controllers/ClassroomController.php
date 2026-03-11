@@ -32,9 +32,7 @@ class ClassroomController extends Controller
 
     public function store(ClassroomRequest $request)
     {
-    
 
-        
         try {
 
             if($request->name != NULL){

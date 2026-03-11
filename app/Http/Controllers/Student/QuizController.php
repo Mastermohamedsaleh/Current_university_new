@@ -42,7 +42,7 @@ class QuizController extends Controller
 
 
         $quiz = Quizze::where('id',$request->quizze_id)->first();  
-        $mytime = Carbon::now('Africa/Cairo')->addHours(1);
+        $mytime = Carbon::now('Africa/Cairo');
         $mytime = $mytime->toDateTimeString();
         $start_time = $quiz->start_time;
         $end_time = $quiz->end_time;

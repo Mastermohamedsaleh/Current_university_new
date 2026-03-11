@@ -1,4 +1,8 @@
-  <script src="{{ mix('js/app.js') }}"></script>
+   
+ 
+<!-- <script src="{{ mix('js/app.js') }}"></script> -->
+
+
       <aside id="sidebar" class="js-sidebar"><!-- side bar content-->
         <div class="h-100">
             <div class="sidebar-logo">
@@ -43,20 +47,7 @@
             <li class="sidebar-item">
                     <a href="{{URL('view_assignment')}}" class="sidebar-link"> <i class="fa-solid fa-book-open-reader" style="padding: 0 10px 0  0"></i>My Assignment
                 
-                <!-- pusher to notifcation -->
-<div id="notifications" class="p-3"></div>
-
-               <script>
-    window.Echo.private('student.{{ auth()->id() }}')
-        .listen('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', (e) => {
-            const msg = e.notification.message;
-            document.getElementById('notifications').innerHTML =
-                `<div class='p-2 bg-blue-100 text-blue-800 rounded mb-2'>${msg}</div>` +
-                document.getElementById('notifications').innerHTML;
-        });
-</script>
-                 
-               <!-- end pusher to notifcation -->
+  
 
                 </a>
              </li>
@@ -85,3 +76,8 @@
             </ul>
         </div>    
     </aside>
+
+ 
+
+
+

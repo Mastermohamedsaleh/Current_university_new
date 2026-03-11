@@ -97,7 +97,7 @@
                                     <td>
 
 
-    <!-- <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4"> -->
+  
       
     <input name="attendences[{{ $student->id }}]" 
          @foreach($student->attendance()->where('attendence_date',date('Y-m-d'))->get() as $attentance)
@@ -106,9 +106,7 @@
          value="presence"   class="leading-tight" type="radio" >
 
         <span class="text-success">Present</span>
-    <!-- </label> -->
 
-    <!-- <label class="ml-4 block text-gray-500 font-semibold"> -->
         <input name="attendences[{{ $student->id }}]" 
   
                @foreach($student->attendance()->where('attendence_date',date('Y-m-d'))->get() as $attentance)
@@ -117,7 +115,7 @@
          @endforeach
          class="leading-tight" type="radio" value="absent" >
         <span class="text-danger">Absent</span>
-    <!-- </label> -->
+
 
 
 

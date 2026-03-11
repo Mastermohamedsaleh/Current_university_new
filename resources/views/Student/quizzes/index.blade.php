@@ -51,11 +51,11 @@
                             <?php $i= 1  ?>
              @foreach($quizzes as $quizze)
                             <tr>
-                            <td> {{$i++}} </td>
+                      <td> {{$i++}} </td>
                       <td>{{$quizze->name}}</td>
                       <td>{{$quizze->Course->name}}</td>
                       <td>{{$quizze->doctor->name}}</td>
-                      <td>  {{  date('l' , strtotime( $quizze->start_time ) )}} {{  date('h:i A' , strtotime( $quizze->start_time ) )}}</td>
+                      <td> {{  date('l' , strtotime( $quizze->start_time ) )}} {{  date('h:i A' , strtotime( $quizze->start_time ) )}}</td>
                       <td> {{  date('l' , strtotime( $quizze->end_time ) )}} {{  date('h:i A' , strtotime( $quizze->end_time ) )}}</td>
 
                       <td>
@@ -73,7 +73,7 @@
                       ?>
 
    
-                      <?php $mytime = \Carbon\Carbon::now('Africa/Cairo')->addHours(1);
+        <?php $mytime = \Carbon\Carbon::now('Africa/Cairo')->addHours(1);
         $mytime = $mytime->toDateTimeString();
         $end_time = $quizze->end_time;
         $start_time = $quizze->start_time;?>

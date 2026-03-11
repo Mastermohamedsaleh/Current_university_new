@@ -119,18 +119,6 @@
 </div>
 
 
-<script>
-    
-document.addEventListener('DOMContentLoaded', function () {
-    const classroomId = document.querySelector('meta[name="classroom-id"]').content;
-
-    Echo.private(`student.${classroomId}`)
-        .notification((notification) => {
-            console.log('وصل إشعار:', notification.message);
-        });
-});
-
-</script>
 
 
 @include('footer')

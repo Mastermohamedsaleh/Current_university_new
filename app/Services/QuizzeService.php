@@ -25,7 +25,7 @@ class QuizzeService
         return $this->quizzeRepository->allQuizeByDoctor(Auth::id());
     }
 
-        public function createQuiz(array $data)
+    public function createQuiz(array $data)
     {
         $course = Course::findOrFail($data['course_id']);
 

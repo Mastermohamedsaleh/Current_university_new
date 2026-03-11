@@ -53,8 +53,12 @@ class AssignmentService
             'doctor_id'    => auth()->id(),
                 ]
              );    
+// 1️⃣ تبعث Notification لكل طالب
+$students = Student::where('college_id', $assignment->college_id)
+    ->where('classroom_id', $assignment->classroom_id)
+    ->get();
 
-        event(new AssignmentCreated($assignment));
+
         return $assignment;
         
     }

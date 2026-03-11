@@ -72,6 +72,6 @@ $('select[name="college_id"]').on('change', function () {
 
 
 
-
+<script  src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

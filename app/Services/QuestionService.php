@@ -24,7 +24,6 @@ class QuestionService
     {
                 $typequestion = $data['typequestion'];
                 if($typequestion == 'trueorfale'){
-                //   $trimmed = trim($data['answers']);
                   $answers = explode('-', trim($data['answers']));
                   $numWords = count($answers);
                   if($numWords == 2){
@@ -36,19 +35,19 @@ class QuestionService
             'quizze_id'    => $data['quizz_id'],
         ];
 
-        // نمررها للريبوزتري
+    
          $question = $this->questionRepository->create($questionData);
       
-                      // $answer = preg_split('/(-)/', $answers);
-                           $answer   = explode('-', $answers);
-      
-                      for($i = 0 ; $i < count($answer) ; $i++){
-                       $insert = [
-                           'question_id' => $question->id,
-                           'option_text'=>$answer[$i],
-                           'points'=>$data['score'],
-                         ];
-                   DB::table('options')->insert($insert);
+                    
+        
+
+              for($i = 0 ; $i < count($answers) ; $i++){
+               $insert = [
+                   'question_id' => $question->id,
+                   'option_text'=>$$answers[$i],
+                   'points'=>$data['score'],
+                 ];
+           DB::table('options')->insert($insert);
                    } 
                      
                       return $question;
@@ -57,7 +56,7 @@ class QuestionService
                       return redirect()->back();
                   }
                 }else{
-                //   $trimmed = trim($data['answers']);
+               
                 $answers = explode('-', trim($data['answers']));
                   $numWords = count($answers);
                   if($numWords == 3){
@@ -69,16 +68,15 @@ class QuestionService
             'quizze_id'    => $data['quizz_id'],
         ];
 
-        // نمررها للريبوزتري
+    
    $question = $this->questionRepository->create($questionData);
     
-                      // $answer = preg_split('/(-)/', $answers);
-                      $answer   = explode('-', $answers);
+                     
       
-                      for($i = 0 ; $i < count($answer) ; $i++){
+                      for($i = 0 ; $i < count($answers) ; $i++){
                        $insert = [
                            'question_id' => $question->id,
-                           'option_text'=>$answer[$i],
+                           'option_text'=>$$answers[$i],
                            'points'=>$data['score'],
                          ];
                    DB::table('options')->insert($insert);
@@ -98,7 +96,6 @@ class QuestionService
     {
        $typequestion = $data['typequestion'];
           if($typequestion == 'trueorfale'){
-            // $trimmed = trim($data['answers']);
             $answers = explode('-', trim($data['answers']));
             $numWords = count($answers);
             if($numWords == 2){
@@ -111,7 +108,7 @@ class QuestionService
             'quizze_id'    => $data['quizz_id'],
         ];
 
-        // نمررها للريبوزتري
+       
         return $this->questionRepository->create($questionData);
 
             }else{
@@ -119,9 +116,6 @@ class QuestionService
                 return redirect()->back();
             }
           }else{
-            // $trimmed = trim($data['answers']);
-            
-            // $numWords = count(explode('-', $trimmed));
                         $answers = explode('-', trim($data['answers']));
             $numWords = count($answers);
             if($numWords == 3){
@@ -134,7 +128,7 @@ class QuestionService
             'quizze_id'    => $data['quizz_id'],
         ];
 
-        // نمررها للريبوزتري
+       
         return $this->questionRepository->create($questionData);
 
 

@@ -51,10 +51,8 @@ class OnlineCourseDirectController extends Controller
                 'topic' => $request->topic,
                 'type' => 2, // 2 for scheduled meeting
                 'start_time' => Carbon::parse($request->start_time)->toIso8601String(),
-                'duration' => '60',
+                'duration' => $request->duration,
             ]);    
-
-            // return $response->json();
 
 
             $course =   Course::where('id',$request->course)->first();

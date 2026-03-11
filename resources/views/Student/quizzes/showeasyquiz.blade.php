@@ -42,7 +42,7 @@
    
         <div class="card-body">
 
-        <h4 class="text-success"> {{ $question->title }}</h4>
+        <h4 class="text-success"> {{ $question->title }}</h4>      
             
 
 
