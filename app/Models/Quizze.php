@@ -56,7 +56,14 @@ class Quizze extends Model
     {
         return $this->hasMany('App\Models\Degree');
     }
+     public function questions()
+    {
+        return $this->hasMany(Question::class, 'quizze_id');
+    }
 
-
+    public function specialQuizzes()
+{
+    return $this->hasMany(SpecialQuiz::class, 'quizze_id');
+}
 
 }
