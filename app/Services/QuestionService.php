@@ -4,10 +4,9 @@ namespace App\Services;
 
 use App\Interfaces\QuestionRepositoryInterface;
 use App\Models\Quizze;
-use App\Models\Option;
-use App\Models\Question; 
+use App\Models\Question;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class QuestionService
 {
@@ -16,149 +15,65 @@ class QuestionService
     public function __construct(QuestionRepositoryInterface $questionRepository)
     {
         $this->questionRepository = $questionRepository;
-    } 
+    }
 
 
-
-    public function  EasyQuizze(array $data, Quizze $quiz)
+    public function create(array $data): Question
     {
-                $typequestion = $data['typequestion'];
-                if($typequestion == 'trueorfale'){
-                  $answers = explode('-', trim($data['answers']));
-                  $numWords = count($answers);
-                  if($numWords == 2){
-            $questionData = [
-            'title'        => $data['title'],
-            'answers'      => implode('-', $answers),
-            'right_answer' => $data['right_answer'],
-            'score'        => $data['score'],
-            'quizze_id'    => $data['quizz_id'],
-        ];
+        $quiz = Quizze::where('id', $data['quizz_id'])
+            ->where('doctor_id', auth()->id())
+            ->firstOrFail();
 
-    
-         $question = $this->questionRepository->create($questionData);
-      
-                    
-        
+        $answersArray = $this->validateAndExplode($data);
 
-              for($i = 0 ; $i < count($answers) ; $i++){
-               $insert = [
-                   'question_id' => $question->id,
-                   'option_text'=>$$answers[$i],
-                   'points'=>$data['score'],
-                 ];
-           DB::table('options')->insert($insert);
-                   } 
-                     
-                      return $question;
-                  }else{
-                      Session::flash('error', 'Only 1 Sparate between String Please Use -');
-                      return redirect()->back();
-                  }
-                }else{
-               
-                $answers = explode('-', trim($data['answers']));
-                  $numWords = count($answers);
-                  if($numWords == 3){
-            $questionData = [
-            'title'        => $data['title'],
-            'answers'      => implode('-', $answers),
-            'right_answer' => $data['right_answer'],
-            'score'        => $data['score'],
-            'quizze_id'    => $data['quizz_id'],
-        ];
+        return DB::transaction(function () use ($data, $answersArray, $quiz) {
+            
+            $question = $this->questionRepository->create([
+                'title'        => $data['title'],
+                'answers'      => implode('-', $answersArray),
+                'right_answer' => $data['right_answer'],
+                'score'        => $data['score'],
+                'quizze_id'    => $data['quizz_id'],
+            ]);
 
-    
-   $question = $this->questionRepository->create($questionData);
-    
-                     
-      
-                      for($i = 0 ; $i < count($answers) ; $i++){
-                       $insert = [
-                           'question_id' => $question->id,
-                           'option_text'=>$$answers[$i],
-                           'points'=>$data['score'],
-                         ];
-                   DB::table('options')->insert($insert);
-                   } 
-                     
-                      return $question;
-                  }else{
-                      Session::flash('error', 'Only 2 Sparate between String Please Use -');
-                      return redirect()->back();
-                  }
-                }  
-      
+            if ($quiz->type_quiz == 0) {
+                $this->saveOptions($question->id, $answersArray, $data['score']);
+            }
+
+            return $question;
+        });
     }
 
-
-    public function  HardQuizze(array $data, Quizze $quiz) 
+    protected function validateAndExplode($data)
     {
-       $typequestion = $data['typequestion'];
-          if($typequestion == 'trueorfale'){
-            $answers = explode('-', trim($data['answers']));
-            $numWords = count($answers);
-            if($numWords == 2){
-                $question = new Question();
-            $questionData = [
-            'title'        => $data['title'],
-            'answers'      => implode('-', $answers),
-            'right_answer' => $data['right_answer'],
-            'score'        => $data['score'],
-            'quizze_id'    => $data['quizz_id'],
-        ];
+        $answers = explode('-', trim($data['answers']));
+        $count = count($answers);
 
-       
-        return $this->questionRepository->create($questionData);
+        if ($data['typequestion'] == 'trueorfale' && $count != 2) {
+            $this->abortWithError('يجب إدخال إجابتين فقط ويفصل بينهما -');
+        }
 
-            }else{
-                Session::flash('error', 'Only 1 Sparate between String Please Use -');
-                return redirect()->back();
-            }
-          }else{
-                        $answers = explode('-', trim($data['answers']));
-            $numWords = count($answers);
-            if($numWords == 3){
+        if ($data['typequestion'] == 'choose' && $count != 3) {
+            $this->abortWithError('يجب إدخال 3 إجابات ويفصل بينهما -');
+        }
 
-            $questionData = [
-            'title'        => $data['title'],
-            'answers'      => implode('-', $answers),
-            'right_answer' => $data['right_answer'],
-            'score'        => $data['score'],
-            'quizze_id'    => $data['quizz_id'],
-        ];
-
-       
-        return $this->questionRepository->create($questionData);
-
-
-
-
-          
-            }else{
-                Session::flash('error', 'Only 2 Sparate between String Please Use -');
-                return redirect()->back();
-            }
-          }  
+        return $answers;
     }
 
-
-public function create(array $data): Question 
-{
-    $quizz = Quizze::where('id', $data['quizz_id'])
-        ->where('doctor_id', auth()->user()->id)
-        ->first();
-
-    if (!$quizz) {
-        throw new \Exception("Quiz not found or not authorized");
+    protected function saveOptions($questionId, $answers, $score)
+    {
+        foreach ($answers as $answerText) {
+            DB::table('options')->insert([
+                'question_id' => $questionId,
+                'option_text' => $answerText,
+                'points'      => $score,
+            ]);
+        }
     }
 
-    if ($quizz->type_quiz == 0) {
-        return $this->EasyQuizze($data, $quizz);
+    protected function abortWithError($message)
+    {
+        Session::flash('error', $message);
+        abort(redirect()->back());
     }
-
-    return $this->HardQuizze($data, $quizz);
-}
-
-
 }
