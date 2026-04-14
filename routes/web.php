@@ -26,7 +26,10 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-    
+
+
+
+define('PAGENATOR_COUNT',10);
 
 Route::get('/', function () {
 
