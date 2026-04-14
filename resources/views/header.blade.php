@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @if(auth('admin')->check())
     <title>Admin Dashboard</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
      @elseif(auth('doctor')->check())
     <title>Doctor Dashboard</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
      @elseif(auth('student')->check())
     <title>Student Dashboard</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
      @else
     <title>Accountant Dashboard</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
      @endif
    
 

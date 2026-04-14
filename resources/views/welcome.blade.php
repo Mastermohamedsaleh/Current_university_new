@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Academy</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
 
     <link rel="stylesheet" href="{{ URL::asset('Styles/bootstrap.min.css') }}  " />
     <!-- <link rel="stylesheet" href="{{ URL::asset('Styles/style.css') }} " /> -->
