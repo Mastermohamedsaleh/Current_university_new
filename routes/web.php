@@ -80,7 +80,9 @@ Route::controller(ProfileController::class)->group(function() {
 Route::get('/force-login', function () {
     try {
         // 1. تنظيف وتنزيل الداتا الأساسية غصب عن أي Seeder
-        DB::table('genders')->upsert([['id'=>1, 'name'=>'Male'], ['id'=>2, 'name'=>'Female']], ['id']);
+        DB::table('genders')->upsert([['id'=>1, 'type'=>'Male'], ['id'=>2, 'type'=>'Female']], ['id']);
+
+        DB::table('nationalities')->upsert([['id'=>1, 'nationalitie'=>'Egyption'], ['id'=>2, 'nationalitie'=>'Saudi Arab']], ['id']);
         
         // 2. تحديث الأدمن بالـ Hash بتاع السيرفر الحالي
         $admin = Admin::updateOrCreate(
