@@ -26,16 +26,16 @@ class StudentController extends Controller
         if(auth()->user()->status == 0 ){
             $search = $request->input('search');          
             if ($search) {  
-                $students = Student::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(PAGENATOR_COUNT);
+                $students = Student::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(env('PAGINATION_COUNT', 10));
             }else{
                 $students = Student::paginate(PAGENATOR_COUNT);  
             } 
         }else{
             $search = $request->input('search');          
             if ($search) {  
-                $students = Student::where('college_id',auth()->user()->college_id)->where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(PAGENATOR_COUNT);
+                $students = Student::where('college_id',auth()->user()->college_id)->where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(env('PAGINATION_COUNT', 10));
             }else{
-                $students = Student::where('college_id',auth()->user()->college_id)->paginate(PAGENATOR_COUNT);  
+                $students = Student::where('college_id',auth()->user()->college_id)->paginate(env('PAGINATION_COUNT', 10));  
             }
         }
 

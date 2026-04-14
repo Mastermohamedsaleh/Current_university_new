@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-define('PAGENATOR_COUNT',10);
+
 
 Route::get('/', function () {
 
