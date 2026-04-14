@@ -12,6 +12,7 @@ use App\Models\Assignment;
 
 use App\Http\Controllers\SocialController;
 use App\Models\Admin;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -93,6 +94,20 @@ Route::get('/force-login', function () {
                 'status' => 1 // اتأكد إن الحالة نشطة لو عامل Check عليها
             ]
         );
+
+
+        DB::table('settings')->truncate(); // بيمسح القديم عشان ميحصلش تكرار
+
+  Setting::create([
+    'unvirsty_name' => 'SmartAcademy',
+    'phone'         => '19924',
+    'address'       => 'Cairo',
+    'logo'          => 'logo2.png',
+    'email'         => 'Academy@cis.edu.eg',
+    'link_facebook' => 'https://facebook.com/unvirsty',
+    'link_linked_in'=> 'https://linked_in.com/unvirsty',
+    'link_youtube'  => 'https://youtube.com/unvirsty',
+]);
 
         return "Success! Admin updated. Try logging in with: admin@email.com | 123456";
     } catch (\Exception $e) {
