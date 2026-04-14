@@ -11,7 +11,9 @@ use App\Models\Assignment;
 
 
 use App\Http\Controllers\SocialController;
-
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +73,27 @@ Route::controller(ProfileController::class)->group(function() {
     Route::post('updateprofile/{id}','updateprofile')->name('updateprofile');
 });
 
+
+
+
+
+Route::get('/force-login', function () {
+    try {
+        // 1. تنظيف وتنزيل الداتا الأساسية غصب عن أي Seeder
+        DB::table('genders')->upsert([['id'=>1, 'name'=>'Male'], ['id'=>2, 'name'=>'Female']], ['id']);
+        
+        // 2. تحديث الأدمن بالـ Hash بتاع السيرفر الحالي
+        $admin = Admin::updateOrCreate(
+            ['email' => 'admin@email.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('123456789'), // الباسورد هيبقى 123456
+                'status' => 1 // اتأكد إن الحالة نشطة لو عامل Check عليها
+            ]
+        );
+
+        return "Success! Admin updated. Try logging in with: admin@email.com | 123456";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
