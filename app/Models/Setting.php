@@ -9,5 +9,6 @@ class Setting extends Model
 {
     use HasFactory;
 
-    protected $guard = [];
+    protected  $fillable = ['unvirsty_name','phone','address','logo','email','link_facebook','link_linked_in','link_youtube'] ;
+  
 }
