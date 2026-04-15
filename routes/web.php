@@ -117,3 +117,12 @@ Route::get('/force-login', function () {
         return "Error: " . $e->getMessage();
     }
 });
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/clear-everything', function () {
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    return "تم تنظيف الكاش وعمل الـ Optimization بنجاح! 🚀";
+});
