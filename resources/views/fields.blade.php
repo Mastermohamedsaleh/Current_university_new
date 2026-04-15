@@ -83,7 +83,7 @@
                 <img
                   id="srch-img"
                   style="height: 30px; width: 30px"
-                  src="Assets/images/51.png"
+                  src="{{ asset('/assetsimages/51.png')}}"
                   alt=""
                 />
               </button>
@@ -134,7 +134,7 @@
             rgba(0, 0, 0, 0.9),
             rgba(0, 0, 0, 0)
           ),
-          url(Assets/images/29.jpg) no-repeat center;
+          url({{ asset('/assetsimages/29.jpg')}}) no-repeat center;
         background-size: cover;
       "
     >
@@ -162,7 +162,7 @@
           class="col-lg-5"
           style="
             height: 414px;
-            background-image: url(Assets/images/13.png);
+            background-image: url({{ asset('/assets/images/13.png')}});
             background-size: cover;
             background-position: center;
           "
@@ -239,7 +239,7 @@
           class="col-lg-5 position-relative"
           style="
             height: 414px;
-            background-image: url(Assets/images/14.png);
+            background-image: url({{ asset('/assets/images/14.png')}});
             background-size: cover;
             background-position: center;
           "
@@ -257,7 +257,7 @@
           class="col-lg-5"
           style="
             height: 414px;
-            background-image: url(Assets/images/15.png);
+            background-image: url({{ asset('/assets/images/15.png')}});
             background-size: cover;
             background-position: center;
           "
@@ -338,7 +338,7 @@
           class="col-lg-5 position-relative"
           style="
             height: 414px;
-            background-image: url(Assets/images/14.png);
+            background-image: url({{ asset('/assets/images/14.png')}});
             background-size: cover;
             background-position: center;
           "
@@ -361,7 +361,7 @@
 <footer
   class="w-100"
   style="
-    background-image: url(Assets/images/Vector.png);
+    background-image: url({{ asset('/assets/images/Vector.png')}});
     background-color: #181818;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
   "

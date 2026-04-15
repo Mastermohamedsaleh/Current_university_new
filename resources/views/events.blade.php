@@ -132,7 +132,7 @@
             rgba(0, 0, 0, 0.9),
             rgba(0, 0, 0, 0)
           ),
-          url(Assets/images/30.png) no-repeat center;
+          url({{ asset('/assets/images/30.png')}}) no-repeat center;
         background-size: cover;
       "
     >
@@ -161,7 +161,7 @@
           style="
             width: 410px;
             height: 410px;
-            background-image: url(Assets/images/24.jpg);
+            background-image: url({{ asset('/assets/images/24.jpg')}});
             background-position: center;
             background-size: cover;
           "
@@ -196,7 +196,7 @@
           style="
             width: 410px;
             height: 410px;
-            background-image: url(Assets/images/25.jpg);
+            background-image: url({{ asset('/assets/images/25.jpg')}});
             background-position: center;
             background-size: cover;
           "
@@ -232,7 +232,7 @@
           style="
             width: 410px;
             height: 410px;
-            background-image: url(Assets/images/26.jpg);
+            background-image: url({{ asset('/assets/images/26.jpg')}});
             background-position: center;
             background-size: cover;
           "
@@ -266,7 +266,7 @@
           style="
             width: 410px;
             height: 410px;
-            background-image: url(Assets/images/23.jpg);
+            background-image: url({{ asset('/assets/images/23.jpg')}});
             background-position: center;
             background-size: cover;
           "
@@ -300,7 +300,7 @@
           style="
             width: 410px;
             height: 410px;
-            background-image: url(Assets/images/31.jpg);
+            background-image: url({{ asset('/assets/images/31.jpg')}});
             background-position: center;
             background-size: cover;
           "
@@ -340,7 +340,7 @@
 <footer
   class="w-100"
   style="
-    background-image: url(Assets/images/Vector.png);
+    background-image: url({{ asset('/assets/images/Vector.png')}});
     background-color: #181818;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
   "

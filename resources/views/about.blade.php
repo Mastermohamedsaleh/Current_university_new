@@ -140,7 +140,7 @@
             rgba(0, 0, 0, 0.9),
             rgba(0, 0, 0, 0)
           ),
-          url(Assets/images/28.png) no-repeat center;
+          url({{ asset('/assets/images/28.png')}}) no-repeat center;
         background-size: cover;
       "
     >
@@ -252,7 +252,7 @@
         class="row px-5 dark-layer"
         style="
           height: 405px;
-          background-image: url(Assets/images/29.jpg);
+          background-image: url({{ asset('/assets/images/29.jpg')}});
           background-size: cover;
           background-position: center;
         "
@@ -312,7 +312,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="Assets/images/27.jpg"
+                      src="{{ asset('/assets/images/27.jpg'}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
@@ -333,7 +333,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="Assets/images/27.jpg"
+                      src="{{ asset('/assets/images/27.jpg'}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
@@ -354,7 +354,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="Assets/images/27.jpg"
+                      src="{{ asset('/assets/images/27.jpg'}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
@@ -377,7 +377,7 @@
                     style="
                       height: 80px;
                       width: 25%;
-                      background-image: url(Assets/images/27.jpg);
+                      background-image: url({{ asset('/assets/images/27.jpg')}});
                       background-position: center;
                       background-size: cover;
                     "
@@ -402,7 +402,7 @@
                     style="
                       height: 80px;
                       width: 25%;
-                      background-image: url(Assets/images/27.jpg);
+                      background-image: url({{ asset('/assets/images/27.jpg')}});
                       background-position: center;
                       background-size: cover;
                     "
@@ -454,7 +454,7 @@
 <footer
   class="w-100"
   style="
-    background-image: url(Assets/images/Vector.png);
+    background-image: url({{ asset('/assets/images/Vector.png')}});
     background-color: #181818;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
   "

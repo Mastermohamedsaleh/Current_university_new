@@ -675,17 +675,19 @@
 
 @foreach($doctors as $doctor)
 
-@if( $doctor->image_name == 'default.jpg')
-<?php $image="{{ asset('/assets/images/default.jpg')}} "; ?>
-@else
-<?php  $image = '/image/'.$doctor->image_name ;?>         
-@endif
+@php
+        if($doctor->image_name == 'default.jpg') {
+            $imagePath = asset('assets/images/default.jpg');
+        } else {
+            $imagePath = asset('image/' . $doctor->image_name);
+        }
+    @endphp
 
         <div class="col-lg-4 col-md-6 col-sm-12 py-3">
           <div
             class="hover2 hover0 card-body rounded-4 position-relative"
             style="
-              background-image: url({{$image}});
+              background-image: url({{$imagePath}});
               background-size: cover;
               background-repeat: no-repeat;
               background-position: bottom 75% right 0px;
@@ -734,7 +736,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: {{ asset('/assets/images/24.jpg')}};
+                background-image: url('{{ asset('/assets/images/24.jpg')}}');
                 background-position: center;
                 background-size: cover;
               "
@@ -773,7 +775,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: {{ asset('/assets/images/25.jpg')}};
+                background-image:url('{{ asset('/assets/images/25.jpg')}}');
                 background-position: center;
                 background-size: cover;
               "
@@ -815,7 +817,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: {{ asset('/assets/images/26.jpg')}};
+                background-image:url(' {{ asset('/assets/images/26.jpg')}}');
                 background-position: center;
                 background-size: cover;
               "
@@ -958,7 +960,7 @@
     <footer
       class="w-100"
       style="
-        background-image: {{ asset('/assets/images/Vector.png')}};
+        background-image:url( '{{ asset('/assets/images/Vector.png')}}');
         background-color: #181818;
         box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
       "
