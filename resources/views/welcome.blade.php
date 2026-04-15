@@ -345,7 +345,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6 p-0">
-          <img class="w-100" src="{{ asset('/assets/images/7.png')}} alt="" />
+          <img class="w-100" src="{{ asset('/assets/images/6.png')}} alt="" />
         </div>
         <div class="col-lg-6 p-0">
           <div
