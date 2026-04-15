@@ -6,7 +6,7 @@
 
     <title>Smart Academy</title>
 
-    <link rel="website icon" type="png" href="{{  asset('assets/images/logo2.png')}} >
+    <link rel="website icon" type="png" href="{{  asset('assets/images/logo2.png')}}" >
 
 
 <link rel="stylesheet" href="{{  asset('Styles/bootstrap.min.css') }}  " />
