@@ -815,7 +815,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: url(/assets/images/26.jpg);
+                background-image: {{ asset('/assets/images/26.jpg')}};
                 background-position: center;
                 background-size: cover;
               "
@@ -873,7 +873,7 @@
                       <img
                         class="mx-2"
                         style="border-radius: 50%; height: 117px; width: 117px"
-                        src="/assets/images/27.jpg"
+                        src="{{ asset('/assets/images/27.jpg')}}"
                       />
                     </div>
                     <div class="w-auto d-flex flex-column">
@@ -899,7 +899,7 @@
                       <img
                         class="mx-2"
                         style="border-radius: 50%; height: 117px; width: 117px"
-                        src="/assets/images/27.jpg"
+                        src="{{ asset('/assets/images/27.jpg'}}"
                       />
                     </div>
                     <div class="w-auto d-flex flex-column">
@@ -958,7 +958,7 @@
     <footer
       class="w-100"
       style="
-        background-image: {{ asset('/assetsimages/Vector.png')}};
+        background-image: {{ asset('/assets/images/Vector.png')}};
         background-color: #181818;
         box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
       "
