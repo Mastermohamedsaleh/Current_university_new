@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Smart Academy</title>
 
-    <link rel="website icon" type="png" href="{{  asset('assets/images/logo2.png')}}" >
+    <link rel="website icon" type="image/png" href="{{ asset('assets/images/logo2.png') }}">
 
-
-<link rel="stylesheet" href="{{  asset('Styles/bootstrap.min.css') }}  " />
-<link rel="stylesheet" href="{{  asset('Styles/home.css') }} " />
-<script defer src="{{  asset('Script/bootstrap.bundle.min.js') }}  "></script>
-<script defer src="{{  asset('Script/signin.js') }}"></script>
-
-
-  </head>
+    <link rel="stylesheet" href="{{ asset('Styles/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Styles/home.css') }}" />
+    <script defer src="{{ asset('Script/bootstrap.bundle.min.js') }}"></script>
+    <script defer src="{{ asset('Script/signin.js') }}"></script>
+</head>
   <body>
     <!-- navbar -->
     <nav
