@@ -246,7 +246,7 @@
                   style="
                     height: 40px;
                     width: 40px;
-                    background-image: url(Assets/images/3.png);
+                    background-image: {{ asset('/Assets/images/3.png') }};
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
@@ -296,7 +296,7 @@
                   style="
                     height: 40px;
                     width: 40px;
-                    background-image: url(Assets/images/5.png);
+                    background-image: {{ asset('/Assets/images/5.png') }};
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
@@ -321,7 +321,7 @@
                   style="
                     height: 40px;
                     width: 40px;
-                    background-image: url(Assets/images/6.png);
+                    background-image: {{ asset('/Assets/images/6.png')}};
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
@@ -345,13 +345,13 @@
       </div>
       <div class="row">
         <div class="col-lg-6 p-0">
-          <img class="w-100" src="Assets/images/7.png" alt="" />
+          <img class="w-100" src="{{ asset('/Assets/images/7.png')}} alt="" />
         </div>
         <div class="col-lg-6 p-0">
           <div
             class="card-body dark-layer h-100"
             style="
-              background-image: url(Assets/images/9.png);
+              background-image: {{ asset('/Assets/images/9.png')}};
               background-size: cover;
             "
           >
@@ -376,7 +376,7 @@
           <div
             class="card-body dark-layer h-100"
             style="
-              background-image: url(Assets/images/10.png);
+              background-image: {{ asset('/Assets/images/10.png')}};
               background-size: cover;
             "
           >
@@ -399,18 +399,18 @@
         </div>
 
         <div class="col-lg-6 p-0">
-          <img class="w-100 h-100" src="Assets/images/18.jpg" alt="" />
+          <img class="w-100 h-100" src="{{ asset('/Assets/images/18.jpg')}}" alt="" />
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6 p-0">
-          <img class="w-100" src="Assets/images/19.jpg" alt="" />
+          <img class="w-100" src="{{ asset('/Assets/images/19.jpg')}}" alt="" />
         </div>
         <div class="col-lg-6 p-0">
           <div
             class="card-body dark-layer h-100"
             style="
-              background-image: url(Assets/images/9.png);
+              background-image: {{ asset('/Assets/images/9.png') }};
               background-size: cover;
             "
           >
@@ -438,7 +438,7 @@
               <div class="heading fs-1 fw-semibold txt-green mb-5">
                 About Our University
               </div>
-              <img class="w-50" src="Assets/images/logo2.png" alt="" />
+              <img class="w-50" src="{{ asset('/Assets/images/logo2.png')}}" alt="" />
             </div>
           </div>
           <div class="col-sm-7">
@@ -509,7 +509,7 @@
           <div
             class="hover1 card rounded-0"
             style="
-              background-image: url(./Assets/images/12.png);
+              background-image: {{ asset('/Assets/images/12.png')}};
               background-size: cover;
               height: 500px;
             "
@@ -546,7 +546,7 @@
           <div
             class="hover1 hover2 card rounded-0"
             style="
-              background-image: url(./Assets/images/13.png);
+              background-image: {{ asset('/Assets/images/13.png')}};
               background-size: cover;
               height: 500px;
             "
@@ -585,7 +585,7 @@
           <div
             class="hover1 hover2 card rounded-0"
             style="
-              background-image: url(./Assets/images/14.png);
+              background-image: {{ asset('/Assets/images/14.png')}};
               background-size: cover;
               height: 500px;
             "
@@ -622,7 +622,7 @@
           <div
             class="hover1 card rounded-0"
             style="
-              background-image: url(./Assets/images/15.png);
+              background-image: {{ asset('/Assets/images/15.png')}};
               background-size: cover;
               height: 500px;
             "
@@ -676,7 +676,7 @@
 @foreach($doctors as $doctor)
 
 @if( $doctor->image_name == 'default.jpg')
-<?php $image="//Assets/images/default.jpg"; ?>
+<?php $image="{{ asset('/Assets/images/default.jpg')}} "; ?>
 @else
 <?php  $image = '/image/'.$doctor->image_name ;?>         
 @endif
@@ -711,7 +711,7 @@
     <div
       class="dark-layer py-2"
       style="
-        background-image: url(Assets/images/23.jpg);
+        background-image: {{ asset('/Assets/images/23.jpg')}};
         background-size: cover;
       "
     >
@@ -734,7 +734,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: url(Assets/images/24.jpg);
+                background-image: {{ asset('/Assets/images/24.jpg')}};
                 background-position: center;
                 background-size: cover;
               "
@@ -773,7 +773,7 @@
               style="
                 width: 410px;
                 height: 410px;
-                background-image: url(Assets/images/25.jpg);
+                background-image: {{ asset('/Assets/images/25.jpg')}};
                 background-position: center;
                 background-size: cover;
               "
@@ -958,7 +958,7 @@
     <footer
       class="w-100"
       style="
-        background-image: url(Assets/images/Vector.png);
+        background-image: {{ asset('/Assetsimages/Vector.png')}};
         background-color: #181818;
         box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
       "
