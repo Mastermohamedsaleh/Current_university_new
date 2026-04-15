@@ -1,5 +1,6 @@
 # 🎓 Modern University Management System (LMS & ERP)
-
+## 🔗 Live Demo
+[View Live Project](https://currentuniversitynew-production.up.railway.app)
 [![Laravel Version](https://img.shields.io/badge/Laravel-9.x-red.svg)](https://laravel.com)
 [![PHP Version](https://img.shields.io/badge/PHP-8.1-blue.svg)](https://php.net)
 [![Design Pattern](https://img.shields.io/badge/Pattern-Repository_%26_Service-orange.svg)](#)
