@@ -4,7 +4,7 @@
             <div class="sidebar-logo">
             <a class="navbar-brand ms-4" href="#"
           ><img
-            src="{{ URL::asset('Assets/images/logo2.png') }}" 
+            src="{{ URL::asset('assets/images/logo2.png') }}" 
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
