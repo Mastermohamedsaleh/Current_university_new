@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="#"
           ><img
-            src="/assets/images/logo.png"
+            src="{{ asset('assets/images/logo.png;)  }} "
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
@@ -969,7 +969,7 @@
             <div class="container">
               <a class="navbar-brand" href="#"
                 ><img
-                  src="/assets/images/logo3.png"
+                  src="{{ asset('assets/images/logo3.png')}}"
                   alt="Smart Academy logo"
                   class="w-100 h-100 py-2"
               /></a>
