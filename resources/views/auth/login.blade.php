@@ -6,13 +6,13 @@
 
     <title>Smart Academy</title>
 
-    <link rel="website icon" type="png" href="{{ URL::asset('assets/images/logo2.png')}} >
+    <link rel="website icon" type="png" href="{{  asset('assets/images/logo2.png')}} >
 
 
-<link rel="stylesheet" href="{{ URL::asset('Styles/bootstrap.min.css') }}  " />
-<link rel="stylesheet" href="{{ URL::asset('Styles/home.css') }} " />
-<script defer src="{{ URL::asset('Script/bootstrap.bundle.min.js') }}  "></script>
-<script defer src="{{ URL::asset('Script/signin.js') }}"></script>
+<link rel="stylesheet" href="{{  asset('Styles/bootstrap.min.css') }}  " />
+<link rel="stylesheet" href="{{  asset('Styles/home.css') }} " />
+<script defer src="{{  asset('Script/bootstrap.bundle.min.js') }}  "></script>
+<script defer src="{{  asset('Script/signin.js') }}"></script>
 
 
   </head>
@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="#"
           ><img
-            src="{{ URL::asset('assets/images/logo.png')}}"
+            src="{{  asset('assets/images/logo.png')}}"
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
@@ -83,7 +83,7 @@
                 <img
                   id="srch-img"
                   style="height: 30px; width: 30px"
-                  src="{{ URL::asset('assets/images/51.png')}}"
+                  src="{{  asset('assets/images/51.png')}}"
                   alt=""
                 />
               </button>
@@ -397,7 +397,7 @@
           <div
             class=""
             style="
-              background-image: url({{ URL::asset('assets/images/Vector.png')}});
+              background-image: url({{  asset('assets/images/Vector.png')}});
               background-color: #192f59;
             "
           >
@@ -407,7 +407,7 @@
                 <div class="m-3 w-50 h-50">
                   <img
                     class="h-100 w-100"
-                    src="{{ URL::asset('assets/images/logo2.png')}}"
+                    src="{{  asset('assets/images/logo2.png')}}"
                     alt=""
                   />
                 </div>
@@ -517,7 +517,7 @@
                 <div
                   class="h-100 w-100 position-relative"
                   style="
-                    background-image: url({{ URL::asset('assets/images/33.jpg')}});
+                    background-image: url({{  asset('assets/images/33.jpg')}});
                     background-position: center;
                     background-size: cover;
                   "
@@ -544,7 +544,7 @@
                 <div
                   class="h-100 w-100 position-relative"
                   style="
-                    background-image: url({{ URL::asset('assets/images/34.jpg')}});
+                    background-image: url({{  asset('assets/images/34.jpg')}});
                     background-position: center;
                     background-size: cover;
                   "
@@ -571,7 +571,7 @@
                 <div
                   class="h-100 w-100 position-relative"
                   style="
-                    background-image: url({{ URL::asset('assets/images/35.jpg')}});
+                    background-image: url({{  asset('assets/images/35.jpg')}});
                     background-position: center;
                     background-size: cover;
                   "
