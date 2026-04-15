@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Academy</title>
-    <link rel="website icon" type="png" href="assets/images/logo2.png" >
+    <link rel="website icon" type="png" href="{{asset('/assets/images/logo2.png')}}" >
 
     <link rel="stylesheet" href="{{ URL::asset('Styles/bootstrap.min.css') }}  " />
     <!-- <link rel="stylesheet" href="{{ URL::asset('Styles/style.css') }} " /> -->
@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="#"
           ><img
-            src="Assets/images/logo.png"
+            src="{{asset('/assets/images/logo.png')}}"
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
@@ -134,7 +134,7 @@
             rgba(0, 0, 0, 0.9),
             rgba(0, 0, 0, 0)
           ),
-          url({{ asset('/assetsimages/29.jpg')}}) no-repeat center;
+          url({{ asset('/assets/images/29.jpg')}}) no-repeat center;
         background-size: cover;
       "
     >
@@ -372,7 +372,7 @@
         <div class="container">
           <a class="navbar-brand" href="#"
             ><img
-              src="Assets/images/logo3.png"
+              src="{{asset('/assets/images/logo3.png')}}"
               alt="Smart Academy logo"
               class="w-100 h-100 py-2"
           /></a>
