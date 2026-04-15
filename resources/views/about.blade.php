@@ -312,7 +312,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="{{ asset('/assets/images/27.jpg'}}"
+                      src="{{ asset('/assets/images/27.jpg')}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
@@ -333,7 +333,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="{{ asset('/assets/images/27.jpg'}}"
+                      src="{{ asset('/assets/images/27.jpg')}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
@@ -354,7 +354,7 @@
                   <div>
                     <img
                       style="border-radius: 50%; height: 117px; width: 117px"
-                      src="{{ asset('/assets/images/27.jpg'}}"
+                      src="{{ asset('/assets/images/27.jpg')}}"
                     />
                   </div>
                   <div class="mx-5 d-flex flex-column">
