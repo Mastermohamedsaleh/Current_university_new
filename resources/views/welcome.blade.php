@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Academy</title>
-    <link rel="website icon" type="png" href="{{ asset('assets/images/logo2.png') }}" >
+    <link rel="website icon" type="png" href="{{ asset('/Assets/images/logo2.png') }}" >
 
     <link rel="stylesheet" href="{{ URL::asset('Styles/bootstrap.min.css') }}  " />
     <!-- <link rel="stylesheet" href="{{ URL::asset('Styles/style.css') }} " /> -->
@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="#"
           ><img
-            src="{{ asset('assets/images/logo.png;)  }} "
+            src="{{ asset('/Assets/images/logo.png')  }} "
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
@@ -676,7 +676,7 @@
 @foreach($doctors as $doctor)
 
 @if( $doctor->image_name == 'default.jpg')
-<?php $image="/assets/images/default.jpg"; ?>
+<?php $image="//Assets/images/default.jpg"; ?>
 @else
 <?php  $image = '/image/'.$doctor->image_name ;?>         
 @endif
@@ -969,7 +969,7 @@
             <div class="container">
               <a class="navbar-brand" href="#"
                 ><img
-                  src="{{ asset('assets/images/logo3.png')}}"
+                  src="{{ asset('/Assets/images/logo3.png')}}"
                   alt="Smart Academy logo"
                   class="w-100 h-100 py-2"
               /></a>
