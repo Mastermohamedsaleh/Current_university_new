@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <a class="navbar-brand ms-4" href="#"
           ><img
-            src="Assets/images/logo.png"
+            src="assets/images/logo.png"
             alt="Smart Academy logo"
             class="w-75 h-75"
         /></a>
