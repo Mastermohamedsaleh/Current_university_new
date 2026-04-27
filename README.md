@@ -64,10 +64,14 @@ The project is built using a **Decoupled Architecture**:
    php artisan key:generate
 3.**Database Setup**
    php artisan migrate --seed
-4.**Zoom Credentials**
- ```Add your Zoom App details to .env:
-    ZOOM_ACCOUNT_ID=xxxx
-    ZOOM_CLIENT_ID=xxxx
-    ZOOM_CLIENT_SECRET=xxxx
+4. **Zoom Credentials**
+Add your Zoom App details to your `.env` file:
+```bash
+ZOOM_ACCOUNT_ID=xxxx
+ZOOM_CLIENT_ID=xxxx
+ZOOM_CLIENT_SECRET=xxxx 
+```
+4. **Screenshots**
+  <img width="1896" height="917" alt="Screenshot 2024-06-07 001943" src="https://github.com/user-attachments/assets/735309ba-56cb-4d38-a9e0-378bee4d471a" />
 
 
