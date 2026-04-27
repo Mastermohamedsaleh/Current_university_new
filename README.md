@@ -72,6 +72,14 @@ ZOOM_CLIENT_ID=xxxx
 ZOOM_CLIENT_SECRET=xxxx 
 ```
 4. **Screenshots**
-  <img width="1896" height="917" alt="Screenshot 2024-06-07 001943" src="https://github.com/user-attachments/assets/735309ba-56cb-4d38-a9e0-378bee4d471a" />
 
+<h3 align="center">👨‍⚕️ Doctor Dashboard (Assignments & Quizzes)</h3>
+
+<table border="0" align="center">
+  <tr>
+    <td width="50%" align="center"><b>Assignment Submission (Step 1)</b><br>
+      <img src="https://github.com/user-attachments/assets/735309ba-56cb-4d38-a9e0-378bee4d471a"width="100%">
+    </td>
+  </tr>
+</table>
 
