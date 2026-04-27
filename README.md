@@ -70,6 +70,4 @@ The project is built using a **Decoupled Architecture**:
     ZOOM_CLIENT_ID=xxxx
     ZOOM_CLIENT_SECRET=xxxx
 
-<img width="1898" height="803" alt="Screenshot 2024-06-07 021228" src="https://github.com/user-attachments/assets/0a4de254-9aa1-4bb4-8839-2984114de981" />
-
 
