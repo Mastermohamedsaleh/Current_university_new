@@ -73,13 +73,31 @@ ZOOM_CLIENT_SECRET=xxxx
 ```
 4. **Screenshots**
 
-<h3 align="center">👨‍⚕️ Doctor Dashboard (Assignments & Quizzes)</h3>
+### 📸 Project Screenshots (Modules Showcase)
 
-<table border="0" align="center">
-  <tr>
-    <td width="50%" align="center"><b>Assignment Submission (Step 1)</b><br>
-      <img src="https://github.com/user-attachments/assets/735309ba-56cb-4d38-a9e0-378bee4d471a"width="100%">
-    </td>
-  </tr>
-</table>
+<details>
+  <summary><b>1️⃣ Admin & Management (Click to expand)</b></summary>
+  <p align="center">
+    <img src="https://github.com/user-attachments/assets/9e298629-e407-4faa-b1ff-c37d2e0d5bb0" width="800">
+    <img src="link_صورة_2" width="800">
+  </p>
+</details>
+
+
+<details>
+  <summary><b>2️⃣ Financial & Accounting System</b></summary>
+  <p align="center">
+    <img src="link_صورة_3" width="800">
+    <img src="link_صورة_4" width="800">
+  </p>
+</details>
+
+<details>
+  <summary><b>3️⃣ Zoom Meetings & LMS</b></summary>
+  <p align="center">
+    <img src="link_صورة_5" width="800">
+    <img src="link_صورة_6" width="800">
+  </p>
+</details>
+
 
