@@ -1,5 +1,3 @@
-<img width="1892" height="912" alt="Screenshot 2024-06-07 002914" src="https://github.com/user-attachments/assets/2d92f9fe-6a85-4490-8d86-334595581244" />
-<img width="1892" height="912" alt="Screenshot 2024-06-07 002914" src="https://github.com/user-attachments/assets/e6360659-e8ad-4ad9-9d0d-344f94dc6c82" />
 # 🎓 Modern University Management System (LMS & ERP)
 ## 🔗 Live Demo
 [View Live Project](https://currentuniversitynew-production.up.railway.app)
@@ -76,12 +74,6 @@ ZOOM_CLIENT_SECRET=xxxx
 4. **Screenshots**
 
 ### 📸 Project Screenshots (Modules Showcase)
-<img width="1902" height="798" alt="Screenshot 2024-06-07 010006" src="https://github.com/user-attachments/assets/3e0edbf7-15ec-4578-b2d2-3365b8a05579" />
-<img width="1897" height="841" alt="Screenshot 2024-06-07 005357" src="https://github.com/user-attachments/assets/0a57f79f-56ef-477b-ac4f-6fa02af136b1" />
-<img width="1902" height="757" alt="Screenshot 2024-06-07 005304" src="https://github.com/user-attachments/assets/f0695d02-495c-411a-b3c6-0a80ed9b0671" />
-
-
-
 <details>
   <summary><b>1️⃣ Admin & Management (Click to expand)</b></summary>
   <p align="center">
